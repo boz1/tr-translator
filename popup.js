@@ -221,7 +221,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let response = translate(text);
         document.getElementById("source").innerHTML = response.source
         document.getElementById("source").appendChild(document.createElement("br"))
-        document.getElementById("lang").appendChild(document.createTextNode(response.language))
+        let language = translate(response.language).result
+        if(language.includes("Tan")){
+            language = "dil belirlenemedi"
+        }
+        document.getElementById("lang").appendChild(document.createTextNode(language))
         document.getElementById("translation").innerHTML = response.result
     }
 });
